@@ -1,0 +1,2 @@
+include ':presentation', ':data', ':domain'
+rootProject.name='Base'

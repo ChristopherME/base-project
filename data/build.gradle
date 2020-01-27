@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 22
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //Change this for release URL
+            buildConfigField("String", "BaseURL", "\"https://jsonplaceholder.typicode.com/\"")
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            buildConfigField("String", "BaseURL", "\"https://jsonplaceholder.typicode.com/\"")
+        }
+        qa {
+            minifyEnabled false
+            debuggable true
+            //Change this for qa URL
+            buildConfigField("String", "BaseURL", "\"https://jsonplaceholder.typicode.com/\"")
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(":domain")
+    api dataDependencies.values()
+    kapt rootProject.ext.roomDependencies.roomCompiler
+    testImplementation dataTestDependencies.values()
+}

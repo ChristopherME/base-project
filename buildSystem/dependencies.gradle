@@ -1,0 +1,107 @@
+ext {
+
+    // Android Dx
+    def lifecycleVersion = '2.2.0-alpha05'
+
+    //Koin
+    def koinVersion = '2.0.1'
+
+    // Material Components
+    def materialVersion = '1.0.0'
+
+    // Kotlin Coroutines
+    def coroutinesVersion = '1.2.1'
+
+    // Firebase
+    def firebaseAnalyticsVersion = '17.2.0'
+
+    // Crashalytics
+    def crashalyticsVersion= '2.10.1'
+
+    // For load images.
+    def coilVersion = '0.8.0'
+
+    // FCM
+    def firebaseMessagingVersion = '20.0.0'
+
+    // Chart
+    def mpAndroidChartVersion = '3.1.0'
+
+
+    /*
+     * Presentation dependencies
+     */
+    presentationDependencies = [
+            constraintLayout : 'androidx.constraintlayout:constraintlayout:1.1.3',
+            appCompat : 'androidx.appcompat:appcompat:1.1.0',
+            androidCore : 'androidx.core:core-ktx:1.1.0',
+            // ViewModel Scope and other ViewModel FEATURES
+            viewModel : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            // LiveData extensions (including coroutines support)
+            livedata: "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
+            // Material Components
+            material : "com.google.android.material:material:$materialVersion",
+            // For Android
+            koin : "org.koin:koin-android:$koinVersion",
+            // For ViewModel features
+            koinForViewModel : "org.koin:koin-androidx-viewmodel:$koinVersion",
+            // add the Firebase SDK for Google Analytics
+            firebaseAnalytics:  "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion",
+            firebaseCore:  "com.google.firebase:firebase-core:$firebaseAnalyticsVersion",
+            firebaseCloudMessaging: "com.google.firebase:firebase-messaging:$firebaseMessagingVersion",
+            crashalytics:  "com.crashlytics.sdk.android:crashlytics:$crashalyticsVersion"
+    ]
+
+    presentationTestDependencies = [
+            junit : 'junit:junit:4.12',
+            androidxArchcore : 'androidx.arch.core:core-testing:2.1.0'
+    ]
+
+    presentationTestImplementationDependencies = [
+            androidXRunner : 'androidx.test:runner:1.2.0',
+            androidXEspresso:  'androidx.test.espresso:espresso-core:3.2.0'
+    ]
+
+    /*
+     * Domain Dependencies
+     */
+    domainDependencies = [
+            coroutinesCore : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            coroutinesAndroid : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
+            koin : "org.koin:koin-android:$koinVersion",
+    ]
+
+    domainTestDependencies = [
+            junit : 'junit:junit:4.12',
+            androidXcore : 'androidx.arch.core:core-testing:2.1.0'
+    ]
+
+
+    def retrofitVersion = "2.6.1"
+    def roomVersion = '2.1.0'
+    def loggingInterceptorVersion = '4.2.1'// Requests logging
+    roomDependencies = [
+            roomCompiler : "androidx.room:room-compiler:$roomVersion"
+    ]
+
+    /*
+     * Data Dependencies
+     */
+    dataDependencies = [
+            koin : "org.koin:koin-android:$koinVersion",
+            retrofit : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            loggingInterceptor : "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion",
+            gsonConverter :  "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            roomDataBase : "androidx.room:room-runtime:$roomVersion",
+            coroutinesCore : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            coroutinesAndroid : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    ]
+
+    dataTestDependencies = [
+            junit : 'junit:junit:4.12',
+            androidXcore : 'androidx.arch.core:core-testing:2.1.0',
+            coroutinesTest: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion",
+            koinTest: "org.koin:koin-test:$koinVersion",
+            jsonForJVM: 'org.json:json:20140107'
+    ]
+}

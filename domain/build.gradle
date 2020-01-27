@@ -1,0 +1,10 @@
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    def domainDependencies = rootProject.ext.domainDependencies
+    implementation domainDependencies.values()
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

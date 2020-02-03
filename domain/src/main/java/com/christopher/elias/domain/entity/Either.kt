@@ -31,7 +31,6 @@ sealed class Either<out L, out R> {
     fun <L> left(a: L) = Left(a)
     fun <R> right(b: R) = Right(b)
 
-    //TODO: Test change Any to Unit.
     fun either(fnL: (L) -> Any, fnR: (R) -> Any): Any =
         when (this) {
             is Left -> fnL(a)

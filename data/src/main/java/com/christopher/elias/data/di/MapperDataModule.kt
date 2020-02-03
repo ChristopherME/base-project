@@ -11,6 +11,6 @@ import org.koin.dsl.module
  * Lima, Peru.
  **/
 
-val mapperModule = module {
+val mapperDataModule = module {
     single<TodoMapper>{ TodoMapperImpl() }
 }

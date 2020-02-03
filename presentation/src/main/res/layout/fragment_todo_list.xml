@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="todoListViewModel"
+            type="com.christopher.elias.base.ui.destinations.fragments.todo.list.TodoListViewModel" />
+
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:refreshing="@{safeUnbox(todoListViewModel.isRefreshing)}"
+        app:onRefreshListener="@{() -> todoListViewModel.refreshData()}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:clickable="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_blue_dark"
+                android:elevation="4dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:text="@string/label_todo_toolbar_title"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:padding="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="@{safeUnbox(todoListViewModel.isRefreshing) ? View.GONE : (safeUnbox(todoListViewModel.isLoading) ? View.VISIBLE : View.GONE)}"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/constraint_header"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_sellers_quantity"
+                android:text="@{todoListViewModel.todoListSize}"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:visibility="@{safeUnbox(todoListViewModel.isLoading) ? View.GONE : (safeUnbox(todoListViewModel.showEmptyView) ? View.GONE : (safeUnbox(todoListViewModel.showErrorCause) ? View.GONE : View.VISIBLE))}"
+                app:layout_constraintTop_toBottomOf="@id/progress_bar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="2 TODO's"/>
+
+            <TextView
+                android:text="@string/label_empty_todo_list"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:padding="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{safeUnbox(todoListViewModel.isLoading) ? View.GONE : (safeUnbox(todoListViewModel.showErrorCause) ? View.GONE : (safeUnbox(todoListViewModel.showEmptyView) ? View.VISIBLE : View.GONE))}"
+                app:layout_constraintTop_toBottomOf="@id/progress_bar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:visibility="gone"/>
+
+            <TextView
+                android:textSize="18sp"
+                android:textColor="@color/colorAccent"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{safeUnbox(todoListViewModel.isLoading) ? View.GONE : (safeUnbox(todoListViewModel.showEmptyView) ? View.GONE : (safeUnbox(todoListViewModel.showErrorCause) ? View.VISIBLE : View.GONE))}"
+                app:setCustomErrorMessage="@{todoListViewModel.errorCause}"
+                app:layout_constraintTop_toBottomOf="@id/progress_bar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Error label"
+                tools:visibility="gone"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_todo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="@{safeUnbox(todoListViewModel.isLoading) ? View.GONE : (safeUnbox(todoListViewModel.showEmptyView) ? View.GONE : View.VISIBLE)}"
+                app:layout_constraintTop_toBottomOf="@id/tv_sellers_quantity"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:todoAdapter="@{todoListViewModel.adapter}"
+                tools:listitem="@layout/item_todo"
+                tools:itemCount="2"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>

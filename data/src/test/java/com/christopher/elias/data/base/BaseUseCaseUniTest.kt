@@ -1,6 +1,6 @@
 package com.christopher.elias.data.base
 
-import com.christopher.elias.data.di.mapperModule
+import com.christopher.elias.data.di.mapperDataModule
 import com.christopher.elias.data.di.repositoryModule
 import com.christopher.elias.data.mock.fakeNetworkModule
 import com.christopher.elias.data.mock.SecurePreferencesImplMocked
@@ -34,7 +34,7 @@ abstract class BaseUseCaseUniTest : AutoCloseKoinTest() {
         }
         startKoin {
             modules(arrayListOf(fakePreferencesModule,
-                fakeNetworkModule, mapperModule, repositoryModule, useCasesModule))
+                fakeNetworkModule, mapperDataModule, repositoryModule, useCasesModule))
         }
     }
 

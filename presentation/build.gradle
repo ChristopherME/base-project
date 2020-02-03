@@ -53,6 +53,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(":domain")
+    implementation project(":data")//TODO: Improve this.
     implementation presentationDependencies.values()
     testImplementation presentationTestDependencies.values()
     androidTestImplementation presentationTestImplementationDependencies.androidXRunner

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Base</string>
+    <string name="label_todo_user_id">User ID</string>
+    <string name="label_todo_title">Title</string>
+    <string name="label_todo_completed">Is completed</string>
+    <string name="label_todo_toolbar_title">List of TODO\'s!</string>
+    <string name="label_todo_detail_toolbar_title">Detail of the TODO</string>
+    <string name="label_empty_todo_list">The TODO list is empty.</string>
+    <string name="label_todo_from_network">Todo from Network</string>
+    <string name="label_todo_from_args">Todo from arguments</string>
 </resources>

@@ -4,7 +4,7 @@ import com.christopher.elias.data.network.utils.ConnectionUtils
 
 /**
  * Created by Christopher Elias on 26/10/2019.
- * celias@peruapps.com.pe
+ * christopher.mike.96@gmail.com
  *
  * Peru Apps
  * Lima, Peru.

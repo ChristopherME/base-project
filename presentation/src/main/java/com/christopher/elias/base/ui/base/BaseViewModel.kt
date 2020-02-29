@@ -9,7 +9,7 @@ import java.lang.ref.WeakReference
 
 /**
  * Created by Christopher Elias on 3/02/2020.
- * celias@peruapps.com.pe
+ * christopher.mike.96@gmail.com
  *
  * Peru Apps
  * Lima, Peru.

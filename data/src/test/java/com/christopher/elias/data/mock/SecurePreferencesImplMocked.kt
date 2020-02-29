@@ -4,7 +4,7 @@ import com.christopher.elias.data.preferences.SecurePreferences
 
 /**
  * Created by Christopher Elias on 15/11/2019.
- * celias@peruapps.com.pe
+ * christopher.mike.96@gmail.com
  *
  * Peru Apps
  * Lima, Peru.
